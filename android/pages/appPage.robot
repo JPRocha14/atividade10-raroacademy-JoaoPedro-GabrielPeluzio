@@ -31,6 +31,11 @@ ${Report_abrir}    id=br.com.pztec.estoque:id/btn_abrir
 ${Report_email}    id=br.com.pztec.estoque:id/btn_email
 ${Data_export_alert}    id=android:id/alertTitle
 ${Data_export_ok}    id=android:id/button1
+${Data_import_estoque}    id=new UiSelector().text("Estoque")
+${Data_import_alerta}    id=android:id/alertTitle
+${Report_datafile}    id=br.com.pztec.estoque:id/datafile
+${Report_fileName}    id=android:id/content_preview_filename
+${Report_Erro}    id=android:id/message
 #JP
 ${PAGINA_INICIAL}           xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout
 ${AMOUNT_INCREASE}          id=br.com.pztec.estoque:id/entrada
@@ -208,7 +213,66 @@ E clicou no botao de gerar export
     Espera o elemento e verifica o texto    ${Data_export_data_file_sai}    'stockouts.csv'
     Espera o elemento e verifica o texto    ${Data_export_data_file_grupo}    'group.csv'
 
-E criou um produto 
+E criou um produto e teve entrada e saida de produtos  
+    E há um produto cadastrado
+E que escolheu a funcionalidade import
+    Espera o elemento e clica    ${Data_import}
+    
+Entao ele pode escolher o que quer importar 
+    Espera o elemento, verifica conteúdo e clica nele    ${Data_import_produtos}    'PRODUCT RESTORE'  
+    Espera o elemento e verifica o texto    ${Data_import_alerta}    '/storage/emulated/0/Estoque'
+    Go Back
+    Espera o elemento, verifica conteúdo e clica nele    ${Data_import_entradas}    'STOCK ENTRIES RESTORE' 
+    Espera o elemento e verifica o texto    ${Data_import_alerta}    '/storage/emulated/0/Estoque'
+    Go Back
+    Espera o elemento, verifica conteúdo e clica nele    ${Data_import_saidas}    'STOCK OUTS RESTORE' 
+    Espera o elemento e verifica o texto    ${Data_import_alerta}    '/storage/emulated/0/Estoque'
+    Go Back
+    Espera o elemento, verifica conteúdo e clica nele    ${Data_import_grupos}    'PRODUCT GROUP' 
+    Espera o elemento e verifica o texto    ${Data_import_alerta}    '/storage/emulated/0/Estoque'
+    Go Back
 
-E teve entrada e saida de produtos
+ E que escolheu a funcionalidade Report
+   Espera o elemento e clica    ${Report}
+ Entao ele pode reportar o inventario
+    Espera o elemento, verifica conteúdo e clica nele    ${Report_inventario}    'REPORT INVENTORY'
+    Espera o elemento e clica    ${Report_gerar}
+    Espera o elemento e verifica o texto    ${Report_datafile}    'inventory.pdf generated in'
+    Espera o elemento e clica    ${Report_abrir}
+    Go Back
+    Espera o elemento e clica    ${Report_email}
+    Espera o elemento e verifica o texto    ${Report_fileName}    'inventory.pdf'
 
+Entao ele pode reportar as entradas caso tenha preenchido as datas
+    Espera o elemento, verifica conteúdo e clica nele    ${Report_entrada}    'STOCK ENTRIES'
+    Espera o elemento e clica nele    ${Report_data_1}
+    Espera o elemento e clica    ${Data_export_ok}
+    Espera o elemento e clica    ${Report_data_2}
+    Espera o elemento e clica    ${Data_export_ok}
+    Espera o elemento e clica    ${Report_gerar}
+    Espera o elemento e verifica o texto    ${Report_datafile}    'stockentries.pdf generated in'
+    Espera o elemento e clica    ${Report_abrir}
+    Go Back
+    Espera o elemento e clica    ${Report_email}
+    Espera o elemento e verifica o texto    ${Report_fileName}    'stockentries.pdf'
+Entao ele pode reportar as saidas caso tenha preenchido as datas
+    Espera o elemento, verifica conteúdo e clica nele    ${Report_saida}    'STOCK OUTS'
+    Espera o elemento e clica nele    ${Report_data_1}
+    Espera o elemento e clica    ${Data_export_ok}
+    Espera o elemento e clica    ${Report_data_2}
+    Espera o elemento e clica    ${Data_export_ok}
+    Espera o elemento e clica    ${Report_gerar}
+    Espera o elemento e verifica o texto    ${Report_datafile}    'stockouts.pdf generated in'
+    Espera o elemento e clica    ${Report_abrir}
+    Go Back
+    Espera o elemento e clica    ${Report_email}
+    Espera o elemento e verifica o texto    ${Report_fileName}    'stockouts.pdf'
+
+Entao ele nao pode reportar as entradas caso nao tenha preenchido as datas
+    Espera o elemento, verifica conteúdo e clica nele    ${Report_entrada}    'STOCK ENTRIES'
+    Espera o elemento e clica    ${Report_gerar}
+    Espera o elemento e verifica o texto    ${Report_Erro}    'Please select a date range.'
+Entao ele nao pode reportar as saidas caso nao tenha preenchido as datas
+    Espera o elemento, verifica conteúdo e clica nele    ${Report_saida}    'STOCK OUTS'
+    Espera o elemento e clica    ${Report_gerar}
+    Espera o elemento e verifica o texto    ${Report_Erro}    'Please select a date range.'
