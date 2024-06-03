@@ -38,6 +38,8 @@ ${Report_fileName}    id=android:id/content_preview_filename
 ${Report_Erro}    id=android:id/message
 #JP
 ${PAGINA_INICIAL}           xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout
+${BTN_EDITAR_PRODUTO}       id=br.com.pztec.estoque:id/editar
+${BTN_DELETE}               id=br.com.pztec.estoque:id/deletar
 ${AMOUNT_INCREASE}          id=br.com.pztec.estoque:id/entrada
 ${INPUT_AMOUNT_INCREASE}    id=br.com.pztec.estoque:id/txt_qtdentrada
 ${AMOUNT_DECREASE}          id=br.com.pztec.estoque:id/saida
@@ -67,6 +69,11 @@ ${TITLE_RESTORE}            id=br.com.pztec.estoque:id/textView3
 ${TEXTO_RESTORE}            id=br.com.pztec.estoque:id/lbl_mensagem
 ${BTN_SELECT_RESTORE}       id=br.com.pztec.estoque:id/btn_procurar
 ${RESTORE_WAYS}             xpath=/hierarchy/android.widget.FrameLayout
+${BTN_ESTOQUE}              xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="Estoque"]
+${BTN_APP_BACKUP}           xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="APP_20240603.bkp"]
+${ALERTA_RESTORE}           xpath=/hierarchy/android.widget.FrameLayout
+
+
 
 
 *** Keywords ***
@@ -161,6 +168,27 @@ E a quantidade do produto será reduzida
 E a quantidade dele é 25
     Espera o elemento e verifica conteúdo    ${VALUE_AMOUNT}    25
 
+E ele clica na opção de editar o produto
+    Espera o elemento e clica nele    ${BTN_EDITAR_PRODUTO}
+
+Então ele pode editar as informações do produto
+    Espera o elemento, dá um clear e inputa o novo texto    ${INPUT_DESCRIPTION}    TEXTO EDITADO
+    Espera o elemento, dá um clear e inputa o novo texto    ${INPUT_AMOUNT}         270
+    Espera o elemento, dá um clear e inputa o novo texto    ${INPUT_UNIT_VALUE}     15
+    Espera o elemento e clica nele                          ${BTN_SAVE}
+    Espera o elemento e visualiza o conteúdo                ${PRODUTO_CADASTRADO}
+
+E ele clica na opção de excluir produto
+    Espera o elemento e clica nele         ${BTN_DELETE}
+
+E confirma a operação
+    Espera o elemento e verifica conteúdo                ${TITULO_ALERTA}       Message
+    Espera o elemento e verifica conteúdo                ${MENSSAGEM_ALERTA}    Delete?
+    Espera o elemento, verifica conteúdo e clica nele    ${BTN_OK_ALERTA}    YES
+Então o produto é excluído
+    Page Should Not Contain Element                      ${PRODUTO_CADASTRADO}
+
+
 #Gabriel
 Dado que o usuario esta na paginal inicial 
     Sleep    5
@@ -212,6 +240,15 @@ E clicou no botao de gerar export
     Espera o elemento e verifica o texto    ${Data_export_data_file_ent}    'stockentries.csv'
     Espera o elemento e verifica o texto    ${Data_export_data_file_sai}    'stockouts.csv'
     Espera o elemento e verifica o texto    ${Data_export_data_file_grupo}    'group.csv'
+
+E clica na opção de estoque
+    Espera o elemento e clica nele    ${BTN_ESTOQUE}
+
+E clica na opção de realizar o backup do arquivo baixado
+    Espera o elemento e clica nele    ${BTN_APP_BACKUP}
+
+Então deve ser possível realizar a restauração
+    Espera o elemento e visualiza o conteúdo    ${ALERTA_RESTORE}
 
 E criou um produto e teve entrada e saida de produtos  
     E há um produto cadastrado
@@ -276,3 +313,4 @@ Entao ele nao pode reportar as saidas caso nao tenha preenchido as datas
     Espera o elemento, verifica conteúdo e clica nele    ${Report_saida}    'STOCK OUTS'
     Espera o elemento e clica    ${Report_gerar}
     Espera o elemento e verifica o texto    ${Report_Erro}    'Please select a date range.'
+
