@@ -50,3 +50,16 @@ CT006 - Deve permitir diminuir a quantidade do produto cadastrado
     E a quantidade dele é 25
     Então ele pode dimimuir a quantidade desse produto
     E a quantidade do produto será reduzida
+
+CT007 - Deve permitir a edição do produto
+    Dado que o cliente está na página inicial
+    E há um produto cadastrado
+    E ele clica na opção de editar o produto
+    Então ele pode editar as informações do produto
+
+CT008 - Deve permitir excluir um produto cadastrado
+    Dado que o cliente está na página inicial
+    E há um produto cadastrado
+    E ele clica na opção de excluir produto
+    E confirma a operação
+    Então o produto é excluído

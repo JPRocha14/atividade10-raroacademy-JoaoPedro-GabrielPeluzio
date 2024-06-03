@@ -69,3 +69,17 @@ E há um produto cadastrado
     E preenche os campos obrigatórios
     E clica no botão Save
     Então ele pode cadastrar um produto
+
+Espera o elemento, dá um clear e inputa o novo texto
+    [Arguments]                        ${elemento}    ${texto}
+    Wait Until Element Is Visible      ${elemento} 
+    Click Element                      ${elemento}
+    Clear Text                         ${elemento}
+    Input Text                         ${elemento}    ${texto}
+
+E o backup dos arquivos já foi realizado
+    Quando ele clica na opção de Menu
+    E clica na opção de backup
+    E clica para gerar um arquivo de backup
+    Então o arquivo de backup é gerado
+    Go Back
