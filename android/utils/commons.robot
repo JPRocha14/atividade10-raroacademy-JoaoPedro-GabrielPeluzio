@@ -70,6 +70,7 @@ E há um produto cadastrado
     E clica no botão Save
     Então ele pode cadastrar um produto
 
+
 Espera o elemento, dá um clear e inputa o novo texto
     [Arguments]                        ${elemento}    ${texto}
     Wait Until Element Is Visible      ${elemento} 
@@ -83,3 +84,9 @@ E o backup dos arquivos já foi realizado
     E clica para gerar um arquivo de backup
     Então o arquivo de backup é gerado
     Go Back
+
+    Então ele pode aumentar a quantidade desse produto
+    E a quantidade do produto será aumentada
+    Então ele pode dimimuir a quantidade desse produto
+    E a quantidade do produto será reduzida
+
