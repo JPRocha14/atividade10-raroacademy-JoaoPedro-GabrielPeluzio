@@ -15,8 +15,7 @@ CT001 - todas funcionalidades estao funcionando
 
 CT002 - gerar um export
     Dado que o usuario esta na paginal inicial
-    E criou um produto 
-    E teve entrada e saida de produtos 
+    E criou um produto e teve entrada e saida de produtos  
     E que o usuario clicou no botao menu 
     E que escolheu a funcionalidade export
     E clicou no botao de gerar um export
@@ -24,8 +23,7 @@ CT002 - gerar um export
 
 CT003 - enviar um export
     Dado que o usuario esta na paginal inicial 
-    # E criou um produto 
-    # E teve entrada e saida de produtos 
+    E criou um produto e teve entrada e saida de produtos 
     E que o usuario clicou no botao menu 
     E que escolheu a funcionalidade export
     E clicou no botao de gerar export

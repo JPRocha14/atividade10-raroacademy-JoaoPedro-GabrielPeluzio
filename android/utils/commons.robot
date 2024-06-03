@@ -70,4 +70,7 @@ E há um produto cadastrado
     E preenche os campos obrigatórios
     E clica no botão Save
     Então ele pode cadastrar um produto
-
+    Então ele pode aumentar a quantidade desse produto
+    E a quantidade do produto será aumentada
+    Então ele pode dimimuir a quantidade desse produto
+    E a quantidade do produto será reduzida
