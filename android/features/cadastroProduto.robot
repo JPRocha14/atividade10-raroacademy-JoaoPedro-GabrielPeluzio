@@ -36,3 +36,17 @@ CT004 - Não deve permitir cadastrar um produto sem informar o Unit value
     E preenche a Description e o Amount
     E clica no botão Save
     Então ele não pode cadastrar um produto
+
+CT005 - Deve permitir aumentar a quantidade do produto cadastrado
+    Dado que o cliente está na página inicial
+    E há um produto cadastrado
+    E a quantidade dele é 25
+    Então ele pode aumentar a quantidade desse produto
+    E a quantidade do produto será aumentada
+
+CT006 - Deve permitir diminuir a quantidade do produto cadastrado
+    Dado que o cliente está na página inicial
+    E há um produto cadastrado
+    E a quantidade dele é 25
+    Então ele pode dimimuir a quantidade desse produto
+    E a quantidade do produto será reduzida

@@ -44,3 +44,10 @@ Verifica elemento
         END
     END
     IF    ${counter}>=5    Fail    Elemento nao encontrado
+
+E há um produto cadastrado
+    Dado que o cliente está na página inicial
+    Quando ele clica no botão New para cadastrar produto
+    E preenche os campos obrigatórios
+    E clica no botão Save
+    Então ele pode cadastrar um produto

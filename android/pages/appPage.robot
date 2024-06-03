@@ -7,6 +7,12 @@ Resource    ../utils/commons.robot
 *** Variables ***
 
 ${PAGINA_INICIAL}           xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout
+${AMOUNT_INCREASE}          id=br.com.pztec.estoque:id/entrada
+${INPUT_AMOUNT_INCREASE}    id=br.com.pztec.estoque:id/txt_qtdentrada
+${AMOUNT_DECREASE}          id=br.com.pztec.estoque:id/saida
+${INPUT_AMOUNT_DECREASE}    id=br.com.pztec.estoque:id/txt_qtdsaida
+${BTN_SALVAR_AMOUNT}        id=br.com.pztec.estoque:id/btn_salvar
+${VALUE_AMOUNT}             id=br.com.pztec.estoque:id/txt_quantidade
 ${PRODUTO_CADASTRADO}       id=br.com.pztec.estoque:id/linha_parte1
 ${BTN_NEW}                  id=br.com.pztec.estoque:id/Button1
 ${BTN_MENU}                 id=br.com.pztec.estoque:id/Button3
@@ -30,6 +36,7 @@ ${TITLE_RESTORE}            id=br.com.pztec.estoque:id/textView3
 ${TEXTO_RESTORE}            id=br.com.pztec.estoque:id/lbl_mensagem
 ${BTN_SELECT_RESTORE}       id=br.com.pztec.estoque:id/btn_procurar
 ${RESTORE_WAYS}             xpath=/hierarchy/android.widget.FrameLayout
+
 
 *** Keywords ***
 
@@ -101,3 +108,24 @@ E clica na opção de SELECT FILE
     Espera o elemento e clica nele    ${BTN_SELECT_RESTORE}
 Então ele pode selecionar arquivo a ser restaurado
     Espera o elemento e visualiza o conteúdo    ${RESTORE_WAYS}
+
+Então ele pode aumentar a quantidade desse produto
+    Espera o elemento e clica nele         ${AMOUNT_INCREASE}
+    Espera o elemento e inputa um texto    ${INPUT_AMOUNT_INCREASE}    3
+    Espera o elemento e clica nele         ${BTN_SALVAR_AMOUNT}
+
+Então ele pode dimimuir a quantidade desse produto
+    Espera o elemento e clica nele         ${AMOUNT_DECREASE}
+    Espera o elemento e inputa um texto    ${INPUT_AMOUNT_DECREASE}    3
+    Espera o elemento e clica nele         ${BTN_SALVAR_AMOUNT}
+
+E a quantidade do produto será aumentada
+    Espera o elemento e visualiza o conteúdo    ${PRODUTO_CADASTRADO}
+    Espera o elemento e verifica conteúdo       ${VALUE_AMOUNT}    28
+
+E a quantidade do produto será reduzida
+    Espera o elemento e visualiza o conteúdo    ${PRODUTO_CADASTRADO}
+    Espera o elemento e verifica conteúdo       ${VALUE_AMOUNT}    22
+
+E a quantidade dele é 25
+    Espera o elemento e verifica conteúdo    ${VALUE_AMOUNT}    25
