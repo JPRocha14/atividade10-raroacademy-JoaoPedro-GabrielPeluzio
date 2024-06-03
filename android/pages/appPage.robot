@@ -79,7 +79,7 @@ ${ALERTA_RESTORE}           xpath=/hierarchy/android.widget.FrameLayout
 *** Keywords ***
 
 Dado que o cliente está na página inicial
-    Wait Until Element Is Visible    ${PAGINA_INICIAL}
+    Verifica elemento    ${PAGINA_INICIAL}
 
 Quando ele clica no botão New para cadastrar produto
     Espera o elemento e clica nele   ${BTN_NEW}
@@ -191,8 +191,7 @@ Então o produto é excluído
 
 #Gabriel
 Dado que o usuario esta na paginal inicial 
-    Sleep    5
-    Espera o elemento e verifica    ${Menu}
+    Verifica elemento    ${Menu}
 
 E que o usuario clicou no botao menu 
     Espera o elemento e clica    ${Menu}
@@ -251,7 +250,7 @@ Então deve ser possível realizar a restauração
     Espera o elemento e visualiza o conteúdo    ${ALERTA_RESTORE}
 
 E criou um produto e teve entrada e saida de produtos  
-    E há um produto cadastrado
+    E criou um produto
 E que escolheu a funcionalidade import
     Espera o elemento e clica    ${Data_import}
     

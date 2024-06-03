@@ -85,6 +85,8 @@ E o backup dos arquivos já foi realizado
     Então o arquivo de backup é gerado
     Go Back
 
+E criou um produto
+    E há um produto cadastrado
     Então ele pode aumentar a quantidade desse produto
     E a quantidade do produto será aumentada
     Então ele pode dimimuir a quantidade desse produto

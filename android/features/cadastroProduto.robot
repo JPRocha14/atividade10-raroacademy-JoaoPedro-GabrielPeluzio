@@ -1,4 +1,4 @@
-*** Settings ***
+** Settings ***
 
 Resource    ../base.robot
 Test Setup        Abrir App
