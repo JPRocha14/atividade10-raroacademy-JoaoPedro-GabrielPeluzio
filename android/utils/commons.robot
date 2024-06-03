@@ -4,6 +4,25 @@ Resource    ../base.robot
 
 *** Keywords ***
 
+#Gabriel
+Espera o elemento e clica 
+    [Arguments]    ${elemento}
+    Wait Until Element Is Visible   ${elemento}
+    Click Element        ${elemento}   
+
+
+Espera o elemento e verifica 
+    [Arguments]    ${elemento}
+    Element Should Be Visible    ${elemento}    
+    Element Should Be Enabled    ${elemento}
+    
+
+Espera o elemento e verifica o texto 
+    [Arguments]    ${elemento}    ${texto}
+    Wait Until Element Is Visible    ${elemento}
+    Element Should Be Visible    ${elemento}  ${texto}
+
+#JP
 Espera o elemento e clica nele
     [Arguments]                      ${elemento}
     Wait Until Element Is Visible    ${elemento}
@@ -51,3 +70,4 @@ E há um produto cadastrado
     E preenche os campos obrigatórios
     E clica no botão Save
     Então ele pode cadastrar um produto
+

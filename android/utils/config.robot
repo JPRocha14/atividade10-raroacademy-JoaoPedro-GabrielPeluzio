@@ -1,7 +1,5 @@
 *** Settings ***
-
 Resource    ../base.robot
-
 
 *** Variables ***
 ${ANDROID_AUTOMATION_NAME}        UIAutomator2
@@ -19,6 +17,7 @@ Abrir App
     ...    platformName=${ANDROID_PLATFORM_NAME}    
     ...    platformVersion=${ANDROID_PLATFORM_VERSION}    appActivity=${ANDROID_APP_ACTIVITY}    
     ...    appPackage=${ANDROID_APP_PACKAGE}        autoGrantPermissions=${true}
+
 
 Teardown
     Run Keyword If Test Failed    Capture Page Screenshot
