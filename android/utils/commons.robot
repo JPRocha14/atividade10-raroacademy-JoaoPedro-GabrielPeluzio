@@ -84,9 +84,3 @@ E o backup dos arquivos já foi realizado
     E clica para gerar um arquivo de backup
     Então o arquivo de backup é gerado
     Go Back
-
-    Então ele pode aumentar a quantidade desse produto
-    E a quantidade do produto será aumentada
-    Então ele pode dimimuir a quantidade desse produto
-    E a quantidade do produto será reduzida
-
