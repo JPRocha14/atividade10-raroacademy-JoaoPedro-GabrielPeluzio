@@ -63,3 +63,9 @@ CT008 - Deve permitir excluir um produto cadastrado
     E ele clica na opção de excluir produto
     E confirma a operação
     Então o produto é excluído
+    
+CT009 - Deve permitir cadastrar vários produtos
+    [Template]     Cadastrar vários produtos
+        Iphone 15    35    5600
+        Teclado Mecanico    15    250
+        Mouse Gamer    40    65

@@ -188,6 +188,17 @@ E confirma a operação
 Então o produto é excluído
     Page Should Not Contain Element                      ${PRODUTO_CADASTRADO}
 
+Cadastrar vários produtos
+    [Arguments]    ${descricao}    ${qntd}    ${value}
+    Dado que o cliente está na página inicial
+    Quando ele clica no botão New para cadastrar produto
+    Espera o elemento e visualiza o conteúdo    ${INPUT_DESCRIPTION}
+    Espera o elemento e inputa um texto    ${INPUT_DESCRIPTION}    ${descricao}
+    Espera o elemento e inputa um texto    ${INPUT_AMOUNT}    ${qntd} 
+    Espera o elemento e inputa um texto    ${INPUT_UNIT_VALUE}    ${value} 
+    Espera o elemento e clica nele    ${BTN_SAVE}
+    Espera o elemento e visualiza o conteúdo    ${BTN_MENU}
+    Espera o elemento e verifica conteúdo    //android.widget.TextView[@text='${descricao}']    ${descricao}
 
 #Gabriel
 Dado que o usuario esta na paginal inicial 
