@@ -72,6 +72,7 @@ ${RESTORE_WAYS}             xpath=/hierarchy/android.widget.FrameLayout
 ${BTN_ESTOQUE}              xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="Estoque"]
 ${BTN_APP_BACKUP}           xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="APP_20240603.bkp"]
 ${ALERTA_RESTORE}           xpath=/hierarchy/android.widget.FrameLayout
+${BTN_PESQUISA}             id=android:id/search_button
 
 
 
@@ -199,6 +200,7 @@ Cadastrar vários produtos
     Espera o elemento e clica nele    ${BTN_SAVE}
     Espera o elemento e visualiza o conteúdo    ${BTN_MENU}
     Espera o elemento e verifica conteúdo    //android.widget.TextView[@text='${descricao}']    ${descricao}
+    Espera o elemento e espera que ele esteja habilitado    ${BTN_PESQUISA}
 
 #Gabriel
 Dado que o usuario esta na paginal inicial 
