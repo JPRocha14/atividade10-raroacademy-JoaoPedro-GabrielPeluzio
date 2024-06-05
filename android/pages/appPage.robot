@@ -73,6 +73,7 @@ ${BTN_ESTOQUE}              xpath=//android.widget.TextView[@resource-id="androi
 ${BTN_APP_BACKUP}           xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="APP_20240603.bkp"]
 ${ALERTA_RESTORE}           xpath=/hierarchy/android.widget.FrameLayout
 ${BTN_PESQUISA}             id=android:id/search_button
+${CAMPO_PESQUISA}           id=android:id/search_src_text
 
 
 
@@ -200,7 +201,19 @@ Cadastrar vários produtos
     Espera o elemento e clica nele    ${BTN_SAVE}
     Espera o elemento e visualiza o conteúdo    ${BTN_MENU}
     Espera o elemento e verifica conteúdo    //android.widget.TextView[@text='${descricao}']    ${descricao}
-    Espera o elemento e espera que ele esteja habilitado    ${BTN_PESQUISA}
+
+Dado que o usuário cadastrou vários produtos
+    FOR    ${counter}    IN RANGE    1    4   
+        Cadastrar vários produtos    Iphone ${counter}    25    3500 
+    END
+
+Quando ele pesquisa por um desses produto
+    Espera o elemento e clica nele    ${BTN_PESQUISA}
+    Espera o elemento e inputa um texto    ${CAMPO_PESQUISA}    Iphone 2
+    Press Keycode    66
+
+Então ele pode visualizar o produto pesquisado
+    Espera o elemento e verifica conteúdo    ${INPUT_DESCRIPTION}    Iphone 2
 
 #Gabriel
 Dado que o usuario esta na paginal inicial 

@@ -69,3 +69,8 @@ CT009 - Deve permitir cadastrar vários produtos
         Iphone 15    35    5600
         Teclado Mecanico    15    250
         Mouse Gamer    40    65
+
+CT010 - Deve pesquisar por produtos
+    Dado que o usuário cadastrou vários produtos
+    Quando ele pesquisa por um desses produto
+    Então ele pode visualizar o produto pesquisado
